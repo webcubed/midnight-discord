@@ -26,7 +26,6 @@ jobs:
           git fetch upstream
 
           # Neither forget the -b opt,
-          # the feature/x ref is ambiguous at this stage
           git checkout -b origin
           git merge --no-edit upstream
           git push origin
