@@ -23,16 +23,23 @@ jobs:
       id: sync
       uses: aormsby/Fork-Sync-With-Upstream-action@v3.4.1
       with:
-        upstream_synv_repo: refact0r/midnight-discord
-        upstream_sync_branch: master
         target_sync_branch: master
-        target_repo_token: ${{ secrets.GH_TOKEN }}   # optional, for accessing repos that require authentication
+        target_repo_token: ${{ secrets.GH_TOKEN }}
+        upstream_sync_branch: master
+        upstream_synv_repo: refact0r/midnight-discord
+
 
     # Step 3: Display a message if 'sync' step had new commits (simple test)
-    - name: Check for new commits
-      if: steps.sync.outputs.has_new_commits
-      run: echo "There were new commits."
-
+    - name: New commits found
+      if: steps.sync.outputs.has_new_commits == 'true'
+      run: echo "New commits were found to sync."
+    
+    - name: No new commits
+      if: steps.sync.outputs.has_new_commits == 'false'
+      run: echo "There were no new commits."
+      
+    - name: Show value of 'has_new_commits'
+      run: echo ${{ steps.sync.outputs.has_new_commits }}
     # Step 4: Print a helpful timestamp for your records (not required, just nice)
     - name: Timestamp
       run: date
