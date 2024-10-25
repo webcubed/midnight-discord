@@ -16,6 +16,7 @@ jobs:
       with:
         ref: main
         # submodules: 'recursive'     ### may be needed in your situation
+      if: always()
 
     # Step 2: run this sync action - specify the upstream repo, upstream branch to sync with, and target sync branch
     - name: Pull (Fast-Forward) upstream changes
@@ -27,7 +28,6 @@ jobs:
         target_branch: main
         git_pull_args: --ff-only                    # optional arg use, defaults to simple 'pull'
         github_token: ${{ secrets.GH_TOKEN }}   # optional, for accessing repos that require authentication
-        if: always()  # Catch and handle errors silently
 
     # Step 3: Display a message if 'sync' step had new commits (simple test)
     - name: Check for new commits
