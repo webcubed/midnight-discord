@@ -26,7 +26,7 @@ jobs:
         target_sync_branch: master
         target_repo_token: ${{ secrets.GH_TOKEN }}
         upstream_sync_branch: master
-        upstream_synv_repo: refact0r/midnight-discord
+        upstream_sync_repo: refact0r/midnight-discord
 
 
     # Step 3: Display a message if 'sync' step had new commits (simple test)
