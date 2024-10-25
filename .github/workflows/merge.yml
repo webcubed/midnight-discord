@@ -14,9 +14,8 @@ jobs:
     - name: Checkout main
       uses: actions/checkout@v2
       with:
-        ref: main
+        ref: master
         # submodules: 'recursive'     ### may be needed in your situation
-      if: always()
 
     # Step 2: run this sync action - specify the upstream repo, upstream branch to sync with, and target sync branch
     - name: Pull (Fast-Forward) upstream changes
@@ -24,8 +23,8 @@ jobs:
       uses: aormsby/Fork-Sync-With-Upstream-action@v2.1
       with:
         upstream_repository: refact0r/midnight-discord
-        upstream_branch: main
-        target_branch: main
+        upstream_branch: master
+        target_branch: master
         git_pull_args: --ff-only                    # optional arg use, defaults to simple 'pull'
         github_token: ${{ secrets.GH_TOKEN }}   # optional, for accessing repos that require authentication
 
