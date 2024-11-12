@@ -173,9 +173,10 @@ div.message_d5deea.replying_d5deea::before /* change reply message bar to neutra
 	color: var(--accent-3) !important;
 }
 .divider_d5deea /* unread divider */,
-.mention_c10249 /* NEW unread pill */,
+.mention_edf32f /* NEW unread pill */,
 .mentionsBar_eba0ba /* channel list new mention pill */ {
 	--status-danger: var(--accent-3);
+	color: var(--status-danger-text);
 }
 .message_d5deea.mentioned_d5deea:before /* mention message left edge */,
 .botTagOP_a9e77f /* OP tag */ {
@@ -263,7 +264,7 @@ path[fill='var(--white-500)'] {
 .container_cebd1c.checked_cebd1c > .slider_cebd1c > rect /* settings checkbutton circle */,
 .userMenuItem_e1268c path[fill="var(--white-500)"] /* account switcher account hover */,
 .colorDefault_d90b3d.focused_d90b3d path {
-	fill: var(--text-0);
+	fill: var(--text-0) !important;
 }
 .closeIcon__967e7 path /* alert banner close icon */ {
 	fill: currentColor;
