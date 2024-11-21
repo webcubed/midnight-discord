@@ -73,6 +73,11 @@
 	--login-bg-filter: saturate(0.3) hue-rotate(-15deg) brightness(0.4); /* login background artwork */
 	--green-to-accent-3-filter: hue-rotate(56deg) saturate(1.43); /* add friend page explore icon */
 	--blurple-to-accent-3-filter: hue-rotate(304deg) saturate(0.84) brightness(1.2); /* add friend page school icon */
+
+	/* choose style for window control buttons (minimize-maximize-close) */
+	/* block to show, none to hide; choose only one to show!*/
+	--windows-nav: none; /* default windows-style buttons */
+	--custom-nav: block; /* custom mac-style buttons */
 }
 
 /* change fonts (edit the variables above, not this part) */
@@ -710,7 +715,7 @@ button.button_dd4f85 /* small buttons */,
 
 /* window controls 
 [class^='winButton'] > svg {
-	display: none;
+	display: var(--windows-nav);
 }
 [class^='winButton'] {
 	background: none !important;
@@ -723,6 +728,7 @@ button.button_dd4f85 /* small buttons */,
 	padding-right: calc(var(--spacing) - 5px);
 }
 [class^='winButton']::after {
+	display: var(--custom-nav);
 	content: '';
 	height: 12px;
 	width: 12px;
@@ -933,11 +939,16 @@ button.button_f67531 /* make user panel buttons round */ {
 }
 
 /* fix discovery icon */
-.footer_aa1bff {
+.footer_f8ec41 {
 	background: var(--bg-overlay-app-frame, var(--bg-4));
 }
 .fixedDiscoveryIcon_fea3ef {
 	color: var(--green-360);
+}
+
+/* fix bottom left user profile corner roundness */
+.inner_c69a7b.panel_c69a7b {
+	border-radius: 0 0 var(--roundness-xl) var(--roundness-xl);
 }
 
 .theme-light {
