@@ -10,5 +10,8 @@
 	"devDependencies": {
 		"chokidar": "^3.6.0",
 		"dotenv": "^16.4.5"
+	},
+	"dependencies": {
+		"systemtheme": "file:"
 	}
 }
