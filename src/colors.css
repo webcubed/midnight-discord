@@ -81,7 +81,8 @@
 
 @container root style(--colors: on) {
     .visual-refresh body,
-    .visual-refresh .theme-dark {
+    .visual-refresh .theme-dark,
+    .visual-refresh .theme-light:not(.custom-profile-theme) {
         --activity-card-background: red;
         --alert-bg: red;
         --autocomplete-bg: var(--bg-3);
@@ -102,7 +103,7 @@
         --background-secondary-alt: var(--bg-3);
         --background-tertiary: var(--bg-4);
 
-        --bg-base-primary: red;
+        --bg-base-primary: var(--bg-4); /* screenshare window? */
         --bg-base-secondary: var(--bg-4);
         --bg-base-tertiary: var(--bg-3);
         --background-mod-subtle: var(--bg-3);
@@ -215,6 +216,8 @@
         --channel-icon: var(--text-4);
         --channels-default: var(--text-4);
 
+        --embed-title: var(--text-2);
+
         --header-primary: var(--text-2);
         --header-secondary: var(--text-4);
         --header-muted: var(--text-4);
@@ -284,6 +287,7 @@
 
         --channel-text-area-placeholder: var(--text-5);
 
+        --message-reacted-text: var(--text-2);
         --message-reacted-background: color-mix(in hsl, var(--accent-2), transparent 80%);
 
         --custom-channel-members-bg: var(--bg-4);
@@ -329,7 +333,8 @@
         }
 
         .panel__5dec7 /* game activity panel */,
-        #vc-spotify-player /* vencord spotify plugin */ {
+        #vc-spotify-player /* vencord spotify plugin */,
+        .container__722ff /* background between vc and vc chat */ {
             background: none;
         }
 
@@ -339,10 +344,6 @@
         .side_b3f026 .item_b3f026:active,
         .side_b3f026 .item_b3f026.selected_b3f026 {
             background-color: var(--bg-2) !important;
-        }
-
-        .wrapper_cb9592 > .callContainer_cb9592 /* dm vc */ {
-            background-color: var(--bg-4);
         }
 
         .quickSelectPopout_ebaca5 /* dm vc region select popout */,
@@ -361,7 +362,7 @@
             color: var(--accent-2) !important;
         }
         .colorPickerSwatch__459fb[style="background-color: rgb(88, 101, 242);"] /* folder color picker swatch */,
-        .newBadge__9a337 /* forum post new badge */,
+        .newBadge_faa96b /* forum post new badge */,
         .mentioned__5126c:before /* mention message left edge */ {
             background-color: var(--accent-2) !important;
         }
@@ -610,7 +611,7 @@
         }
 
         #vc-spotify-player {
-            --vc-spotify-green: var(--accent-new);
+            --vc-spotify-green: var(--accent-2);
         }
 
         ::selection,
