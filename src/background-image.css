@@ -1,10 +1,14 @@
+body {
+    --background-image-url: url('');
+}
+
 @property --background-image {
-    syntax: 'on | off';
+    syntax: 'off | on';
     inherits: false;
     initial-value: off;
 }
 
-@container root style(--background-image: on) {
+@container body style(--background-image: on) {
     .visual-refresh .bg__960e4 {
         background: var(--background-image-url);
         background-size: cover;

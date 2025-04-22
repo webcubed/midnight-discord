@@ -1,5 +1,5 @@
 @property --colors {
-    syntax: 'on | off';
+    syntax: 'off | on';
     inherits: false;
     initial-value: on;
 }
@@ -29,23 +29,17 @@
     --accent-3: var(--blue-3); /* accent buttons */
     --accent-4: var(--blue-4); /* accent buttons when hovered */
     --accent-5: var(--blue-5); /* accent buttons when clicked */
-    --mention: linear-gradient(
-        to right,
-        color-mix(in hsl, var(--blue-2), transparent 90%) 60%,
-        transparent
-    ); /* background of messages that mention you */
-    --mention-hover: linear-gradient(
-        to right,
-        color-mix(in hsl, var(--blue-2), transparent 95%) 60%,
-        transparent
-    ); /* background of messages that mention you when hovered */
     --accent-new: var(--blue-2); /* stuff that's normally red like mute/deafen buttons */
+    --mention: linear-gradient(to right, color-mix(in hsl, var(--blue-2), transparent 90%) 40%, transparent); /* background of messages that mention you */
+    --mention-hover: linear-gradient(to right, color-mix(in hsl, var(--blue-2), transparent 95%) 40%, transparent); /* background of messages that mention you when hovered */
+    --reply: linear-gradient(to right, color-mix(in hsl, var(--text-3), transparent 90%) 40%, transparent); /* background of messages that reply to you */
+    --reply-hover: linear-gradient(to right, color-mix(in hsl, var(--text-3), transparent 95%) 40%, transparent); /* background of messages that reply to you when hovered */
 
     /* status indicator colors */
-    --online: var(--green-2); /* change to #44a25b for default green */
-    --dnd: var(--red-2); /* change to #d83a42 for default red */
-    --idle: var(--yellow-2); /* change to #c99656 for default yellow */
-    --streaming: var(--purple-2); /* change to #593695 for default purple */
+    --online: var(--green-2); /* change to #43a25a for default */
+    --dnd: var(--red-2); /* change to #d83a42 for default */
+    --idle: var(--yellow-2); /* change to #ca9654 for default */
+    --streaming: var(--purple-2); /* change to ##9147ff for default */
     --offline: var(--text-4); /* change to #83838b for default offline color */
 
     /* border colors */
@@ -87,7 +81,8 @@
 
 @container root style(--colors: on) {
     .visual-refresh body,
-    .visual-refresh .theme-dark {
+    .visual-refresh .theme-dark:not(.custom-user-profile-theme),
+    .visual-refresh .theme-light:not(.custom-user-profile-theme) {
         --activity-card-background: red;
         --alert-bg: red;
         --autocomplete-bg: var(--bg-3);
@@ -99,8 +94,8 @@
         --background-mentioned-hover: var(--mention-hover);
         --background-message-automod: red;
         --background-message-automod-hover: red;
-        --background-message-highlight: var(--bg-2);
-        --background-message-highlight-hover: var(--bg-3);
+        --background-message-highlight: var(--reply);
+        --background-message-highlight-hover: var(--reply-hover);
         --background-message-hover: var(--message-hover);
 
         --background-primary: var(--bg-4);
@@ -108,12 +103,12 @@
         --background-secondary-alt: var(--bg-3);
         --background-tertiary: var(--bg-4);
 
-        --bg-base-primary: red;
+        --bg-base-primary: var(--bg-4); /* screenshare window? */
         --bg-base-secondary: var(--bg-4);
         --bg-base-tertiary: var(--bg-3);
-        --background-mod-subtle: var(--bg-3);
-        --background-mod-normal: var(--bg-3);
-        --background-mod-strong: var(--bg-3);
+        --background-mod-subtle: var(--hover);
+        --background-mod-normal: var(--active);
+        --background-mod-strong: var(--active-2);
         --background-base-low: var(--bg-4);
         --background-base-lower: var(--bg-4);
         --background-base-lowest: var(--bg-4);
@@ -123,6 +118,7 @@
         --bg-surface-overlay: var(--bg-4);
         --bg-surface-raised: var(--bg-3);
         --chat-background-default: var(--bg-3);
+        --chat-text-muted: var(--text-5);
         --input-background: var(--bg-3);
         --modal-background: var(--bg-4);
         --modal-footer-background: var(--bg-4);
@@ -217,11 +213,13 @@
         --polls-victor-fill: color-mix(in hsl, var(--green-2), transparent 90%);
 
         --card-primary-bg: var(--bg-3);
-        --card-secondary-bg: red;
-        --channel-icon: var(--text-3);
+        --card-secondary-bg: var(--bg-2);
+        --channel-icon: var(--text-4);
         --channels-default: var(--text-4);
 
-        --header-primary: var(--text-3);
+        --embed-title: var(--text-2);
+
+        --header-primary: var(--text-2);
         --header-secondary: var(--text-4);
         --header-muted: var(--text-4);
 
@@ -234,7 +232,7 @@
         --info-danger-text: red;
         --info-help-background: color-mix(in hsl, var(--blue-2), transparent 80%);
         --info-help-foreground: var(--blue-1);
-        --info-help-text: red;
+        --info-help-text: var(--blue-1);
         --info-positive-background: color-mix(in hsl, var(--yellow-1), transparent 80%);
         --info-positive-text: var(--green-1);
         --info-warning-background: color-mix(in hsl, var(--yellow-2), transparent 80%);
@@ -260,13 +258,16 @@
         --text-feedback-warning: red;
         --text-tertiary: var(--text-4);
 
+        --user-profile-overlay-background: var(--bg-4);
+        --user-profile-overlay-background-hover: var(--bg-2);
+
         --status-danger: var(--red-2);
         --status-danger-background: var(--red-3);
         --status-danger-text: var(--white);
-        --status-dnd: red;
-        --status-idle: red;
-        --status-offline: red;
-        --status-online: red;
+        --status-dnd: var(--dnd); /* server profiles */
+        --status-idle: var(--idle);
+        --status-offline: var(--offline);
+        --status-online: var(--online);
         --status-positive: var(--green-2);
         --status-positive-background: var(--green-2);
         --status-positive-text: var(--white);
@@ -290,6 +291,7 @@
 
         --channel-text-area-placeholder: var(--text-5);
 
+        --message-reacted-text: var(--text-2);
         --message-reacted-background: color-mix(in hsl, var(--accent-2), transparent 80%);
 
         --custom-channel-members-bg: var(--bg-4);
@@ -311,6 +313,9 @@
 
         --red-400: var(--red-2);
         --red-500: var(--red-3);
+
+        --green-360: var(--green-2); /* seems to be mostly used by vencord plugins */
+        --primary-400: var(--text-4);
     }
 
     .visual-refresh {
@@ -332,7 +337,7 @@
         }
 
         .panel__5dec7 /* game activity panel */,
-        #vc-spotify-player /* vencord spotify plugin */ {
+        .container__722ff /* background between vc and vc chat */ {
             background: none;
         }
 
@@ -344,10 +349,6 @@
             background-color: var(--bg-2) !important;
         }
 
-        .wrapper_cb9592 > .callContainer_cb9592 /* dm vc */ {
-            background-color: var(--bg-4);
-        }
-
         .quickSelectPopout_ebaca5 /* dm vc region select popout */,
         .participantsButton__211d1 /* vc participants button */,
         .voiceBar__7aaec /* n in voice bar (channel list) */,
@@ -355,7 +356,8 @@
             background-color: var(--bg-3);
         }
 
-        .colorable_f1ceac.primaryDark_f1ceac {
+        .colorable_f1ceac.primaryDark_f1ceac,
+        .reaction_f8896c /* forum post reaction */ {
             background-color: var(--bg-2);
         }
 
@@ -363,12 +365,20 @@
             color: var(--accent-2) !important;
         }
         .colorPickerSwatch__459fb[style="background-color: rgb(88, 101, 242);"] /* folder color picker swatch */,
-        .newBadge__9a337 /* forum post new badge */,
+        .newBadge_faa96b /* forum post new badge */,
         .mentioned__5126c:before /* mention message left edge */ {
             background-color: var(--accent-2) !important;
         }
         .replying__5126c:before /* reply message left edge */ {
             background-color: var(--text-2) !important;
+        }
+
+        #app-mount .message__5126c.replying__5126c:hover /* override fix for message reply hover */ {
+            background: var(--reply-hover);
+        }
+
+        .visual-refresh .voiceBar__7aaec .barText__7aaec, .visual-refresh .voiceChannelsIcon__7aaec /* x in voice bar text */ {
+            color: var(--accent-2);
         }
 
         .ephemeral__5126c /* ephemeral messages */ {
@@ -380,6 +390,9 @@
 
         .botTagRegular__82f07 /* bot tag */ {
             background-color: var(--accent-2);
+        }
+        .botTagOP__82f07 /* forum post op tag */ {
+            color: var(--text-0);
         }
 
         .container__87bf1 /* settings checkbutton background */ {
@@ -413,7 +426,9 @@
         .backButton_e4cb9a /* stream preview back button */,
         .viewersIcon_d6b206 /* stream preview viewers icon */,
         .bottomControls_e4cb9a /* stream preview viewer number */,
-        .pictureInPictureVideo_e4cb9a .controlIcon_f1ceac /* stream preview control icon */ {
+        .pictureInPictureVideo_e4cb9a .controlIcon_f1ceac /* stream preview control icon */,
+        .bannerVisible_f37cb1 .name_f37cb1 /* server name over banner image */,
+        .dropdownButtonBannerVisible__2637a /* server name over banner dropdown button */ {
             color: var(--text-1);
         }
         .headerText_e4cb9a.base_eb1a4c /* stream preview header text */,
@@ -450,7 +465,9 @@
         #app-mount .akaBadge__488b1 /* aka badge */,
         .message_fcf29c /* you have unsaved settings message */,
         .friendRequestsButton__523aa .base__2b1f5 /* inbox friend request number */,
-        .textBadge__2b1f5[style='background-color: var(--background-accent);'] {
+        .textBadge__2b1f5[style='background-color: var(--background-accent);'],
+        .tooltipBlack__382e7 /* server boost tooltip */,
+        .colorable_f1ceac.experimentDark_f1ceac, .colorable_f1ceac.experimentDark_f1ceac .centerIcon_f1ceac /* vc buttons */ {
             color: var(--text-3);
         }
         .status__2f4f7 path[fill='var(--white)'],
@@ -545,33 +562,49 @@
             outline: 2px solid var(--accent-2);
         }
 
+        .reactionBtn__23977.forceShow__23977:hover /* fix add reaction button border hover */ {
+            border-color: var(--bg-2);
+        }
+
+        .flash__03436[data-flash=true] /* reply message flash */ {
+            background: var(--background-message-highlight);
+        }
+
         /* status indicators */
-        rect[fill='#83838b'] {
+        rect[fill='#82838b'] {
             fill: var(--offline);
         }
         .status_a423bd[style='background-color: rgb(131, 131, 139);'] {
             background-color: var(--offline) !important;
         }
-        rect[fill='#44a25b'] {
+        rect[fill='#40a258'],
+        path[fill='#40a258'] /* status activity icon */,
+        path[fill='var(--status-positive)'] /* status activity icon */,
+        .vc-platform-indicator > svg[fill="#43a25a"] {
             fill: var(--online);
         }
-        .status_a423bd[style='background-color: rgb(68, 162, 91);'] {
+        .status_a423bd[style='background-color: rgb(64, 162, 88);'] {
             background-color: var(--online) !important;
         }
-        rect[fill='#c99656'] {
+        rect[fill='#cc954c'],
+        .vc-platform-indicator > svg[fill='#cc954c'] {
             fill: var(--idle);
         }
-        .status_a423bd[style='background-color: rgb(201, 150, 86);'] {
+        .status_a423bd[style='background-color: rgb(204, 149, 76);'] {
             background-color: var(--idle) !important;
         }
-        rect[fill='#d83a42'] {
+        rect[fill='#d83a41'],
+        .vc-platform-indicator > svg[fill='#d83a41'] {
             fill: var(--dnd);
         }
-        .status_a423bd[style='background-color: rgb(216, 58, 66);'] {
+        .status_a423bd[style='background-color: rgb(216, 58, 65);'] {
             background-color: var(--dnd) !important;
         }
-        rect[fill='#593695'] {
+        rect[fill='#9147ff'] {
             fill: var(--streaming);
+        }
+        div[style='display: flex; justify-content: center; align-items: center; border-radius: 5px; background-color: rgb(67, 162, 90); height: 10px; width: 25px;'] {
+            background-color: var(--online) !important;
         }
 
         /* fix radio bar button colors */
@@ -585,9 +618,21 @@
             --radio-bar-accent-color: var(--red-2) !important;
         }
 
-        ::selection {
-            background: var(--accent-3);
+        #vc-spotify-player {
+            --vc-spotify-green: var(--accent-2);
+        }
+        .barFill_a562c8 {
+            background-color: var(--accent-2) !important;
+        }
+
+        .vcd-screen-picker-option-radio[data-checked='true'] .defaultColor__4bd52 {
             color: var(--text-0);
         }
+    }
+
+    ::selection,
+    .highlight {
+        background: var(--accent-3);
+        color: var(--text-0);
     }
 }

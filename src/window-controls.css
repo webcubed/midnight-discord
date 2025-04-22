@@ -1,14 +1,14 @@
-@property --custom-window-controls {
-    syntax: 'on | off';
-    inherits: false;
-    initial-value: off;
-}
-
-:root {
+body {
     --window-control-size: 14px;
 }
 
-@container root style(--custom-window-controls: on) {
+@property --custom-window-controls {
+    syntax: 'off | on';
+    inherits: false;
+    initial-value: on;
+}
+
+@container body style(--custom-window-controls: on) {
     .winButtons_c38106 {
         gap: 0;
         padding-right: calc(var(--gap) - (var(--window-control-size) / 2) + 1px);
@@ -45,5 +45,17 @@
     }
     .winButtonMinMax_c38106:nth-child(2)::after {
         background-color: var(--online) !important;
+    }
+}
+
+@container body style(--custom-window-controls: off) and style(--top-bar-button-position: titlebar) {
+    .visual-refresh {
+        .winButton_c38106 {
+            width: calc(var(--window-control-size) * 2);
+            height: calc(var(--window-control-size) * 2);
+        }
+        .winButtons_c38106 {
+            gap: 0;
+        }
     }
 }
