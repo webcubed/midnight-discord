@@ -32,7 +32,7 @@ body {
         }
 
         /* make server list inner scroll */
-        .stack_dbd263 {
+        .stack_dbd263:not([id='guild-list-unread-dms']) {
             overflow: hidden scroll;
             scrollbar-width: none;
         }
@@ -155,7 +155,7 @@ body {
     .base_c48ade:has(.winButtons_c38106) .toolbar__9293f {
         padding-right: calc(32px + 3 * var(--space-xs) + 6 * var(--window-control-size));
     }
-    .base_c48ade:has(.winButtons_c38106) .searchBar__1ac1c {
+    .base_c48ade:has(.winButtons_c38106) .search__1ac1c {
         margin-right: calc(32px + 3 * var(--space-xs) + 6 * var(--window-control-size));
     }
     .base_c48ade:has(.trailing_c38106 > .button__85643) .toolbar__9293f {

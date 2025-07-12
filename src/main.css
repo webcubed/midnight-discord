@@ -233,6 +233,8 @@ body {
         overflow: hidden;
         height: auto;
         min-width: 340px;
+        background-position: center calc(-1 * var(--border-thickness));
+        background-size: 100% calc(100% + 2 * var(--border-thickness));
     }
 
     .searchResultsWrap_a9e706 /* search results */ {
@@ -418,6 +420,8 @@ body {
 
     .outer_c0bea0 /* profile outer */ {
         border: 1px solid var(--border-subtle);
+        background-position: center calc(-1 * var(--border-thickness));
+        background-size: 100% calc(100% + 2 * var(--border-thickness));
     }
     .root__24502 {
         background: none;
